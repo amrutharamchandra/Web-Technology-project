@@ -1,0 +1,5 @@
+[
+  { "status": "Delivered", "count": 14 },
+  { "status": "Pending", "count": 3 },
+  { "status": "Delayed", "count": 2 }
+]

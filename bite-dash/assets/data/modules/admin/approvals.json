@@ -1,0 +1,63 @@
+[
+  {
+    "role": "delivery",
+    "username": "dp_suresh",
+    "email": "suresh.dp@example.com",
+    "password": "password123",
+    "fullName": "Suresh Kumar",
+    "dob": "1995-06-15",
+    "age": 30,
+    "gender": "Male",
+    "aadhar": "123456789012",
+    "mobile": "9876543210",
+    "address": "123 MG Road, Bangalore, Karnataka, 560001",
+    "bikeNo": "KA05HY1234",
+    "licenseNo": "DLKA20240012345"
+  },
+  {
+    "role": "delivery",
+    "username": "dp_anita",
+    "email": "anita.dp@example.com",
+    "password": "password456",
+    "fullName": "Anita Singh",
+    "dob": "1998-11-02",
+    "age": 26,
+    "gender": "Female",
+    "aadhar": "234567890123",
+    "mobile": "9988776655",
+    "address": "Sector 22, Noida, Uttar Pradesh, 201301",
+    "bikeNo": "UP14BD8877",
+    "licenseNo": "DLUP20249888991"
+  },
+  {
+    "role": "delivery",
+    "username": "dp_ravi",
+    "email": "ravi.dp@example.com",
+    "password": "pass12345",
+    "fullName": "Ravi Teja",
+    "dob": "1992-04-01",
+    "age": 33,
+    "gender": "Male",
+    "aadhar": "345678901234",
+    "mobile": "9900112233",
+    "address": "1st Cross, Hyderabad, Telangana, 500001",
+    "bikeNo": "TS10CD4321",
+    "licenseNo": "DLTS20237654321"
+  },
+  {
+    "role": "delivery",
+    "username": "dp_rahul",
+    "email": "rahul.dp@example.com",
+    "password": "rahul@123",
+    "fullName": "Rahul Verma",
+    "dob": "2000-09-09",
+    "age": 24,
+    "gender": "Male",
+    "aadhar": "456789012345",
+    "mobile": "9123456789",
+    "address": "Railway Colony, Patna, Bihar, 800001",
+    "bikeNo": "BR01AG9876",
+    "licenseNo": "DLBR20259888888"
+  }
+]
+

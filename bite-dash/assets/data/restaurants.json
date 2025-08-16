@@ -1,0 +1,339 @@
+[
+  {
+    "id": "R01",
+    "name": "SpiceHub",
+    "cuisine": "Indian",
+    "location": "Indiranagar, Bangalore",
+    "rating": 4.2,
+    "reviews": 871,
+    "image": "https://i.pinimg.com/1200x/6a/cc/f3/6accf3cefbe7f9779d151e3696018990.jpg"
+  },
+  {
+    "id": "R02",
+    "name": "SushiZen",
+    "cuisine": "Japanese",
+    "location": "Koramangala, Bangalore",
+    "rating": 4.5,
+    "reviews": 654,
+    "image": "https://i.pinimg.com/736x/6a/a3/83/6aa383e6ecdced3625061f3f90894590.jpg"
+  },
+  {
+    "id": "R03",
+    "name": "TacoTreat",
+    "cuisine": "Mexican",
+    "location": "MG Road, Bangalore",
+    "rating": 4.1,
+    "reviews": 543,
+    "image": "https://i.pinimg.com/736x/ee/c3/18/eec3181eadc3f40c700f74d362980717.jpg"
+  },
+  {
+    "id": "R04",
+    "name": "PastaFiesta",
+    "cuisine": "Italian",
+    "location": "Jayanagar, Bangalore",
+    "rating": 4.4,
+    "reviews": 732,
+    "image": "https://cdn.pixabay.com/photo/2015/04/08/13/13/food-712665_1280.jpg"
+  },
+  {
+    "id": "R05",
+    "name": "DragonBowl",
+    "cuisine": "Chinese",
+    "location": "Whitefield, Bangalore",
+    "rating": 4.0,
+    "reviews": 498,
+    "image": "https://i.pinimg.com/1200x/76/ec/f4/76ecf46b3012efeaa060531bb679641c.jpg"
+  },
+  {
+    "id": "R06",
+    "name": "BurgerBarn",
+    "cuisine": "American",
+    "location": "Marathahalli, Bangalore",
+    "rating": 4.3,
+    "reviews": 619,
+    "image": "https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_1280.jpg"
+  },
+  {
+    "id": "R07",
+    "name": "ThaiSpice",
+    "cuisine": "Thai",
+    "location": "BTM Layout, Bangalore",
+    "rating": 4.2,
+    "reviews": 417,
+    "image": "https://cdn.pixabay.com/photo/2017/12/10/14/47/thai-food-3015700_1280.jpg"
+  },
+  {
+    "id": "R08",
+    "name": "GreekYums",
+    "cuisine": "Greek",
+    "location": "HSR Layout, Bangalore",
+    "rating": 4.1,
+    "reviews": 385,
+    "image": "https://cdn.pixabay.com/photo/2017/10/20/15/58/greek-salad-2872529_1280.jpg"
+  },
+  {
+    "id": "R09",
+    "name": "FalafelHouse",
+    "cuisine": "Middle Eastern",
+    "location": "Electronic City, Bangalore",
+    "rating": 4.0,
+    "reviews": 297,
+    "image": "https://cdn.pixabay.com/photo/2017/05/07/08/56/falafel-2294365_1280.jpg"
+  },
+  {
+    "id": "R10",
+    "name": "VeganVibe",
+    "cuisine": "Vegan",
+    "location": "Yelahanka, Bangalore",
+    "rating": 4.3,
+    "reviews": 312,
+    "image": "https://cdn.pixabay.com/photo/2015/06/19/20/13/salad-815045_1280.jpg"
+  },
+  {
+    "id": "R11",
+    "name": "PunjabiThali",
+    "cuisine": "North Indian",
+    "location": "Basavanagudi, Bangalore",
+    "rating": 4.2,
+    "reviews": 520,
+    "image": "https://cdn.pixabay.com/photo/2021/01/08/11/30/indian-food-5899444_1280.jpg"
+  },
+  {
+    "id": "R12",
+    "name": "SouthFlavors",
+    "cuisine": "South Indian",
+    "location": "Malleshwaram, Bangalore",
+    "rating": 4.6,
+    "reviews": 690,
+    "image": "https://cdn.pixabay.com/photo/2016/11/18/17/20/dosa-1834093_1280.jpg"
+  },
+  {
+    "id": "R13",
+    "name": "RamenRiot",
+    "cuisine": "Japanese",
+    "location": "Hebbal, Bangalore",
+    "rating": 4.1,
+    "reviews": 358,
+    "image": "https://cdn.pixabay.com/photo/2020/10/12/14/04/ramen-5647273_1280.jpg"
+  },
+  {
+    "id": "R14",
+    "name": "ShawarmaSpot",
+    "cuisine": "Lebanese",
+    "location": "Banashankari, Bangalore",
+    "rating": 4.0,
+    "reviews": 401,
+    "image": "https://cdn.pixabay.com/photo/2021/09/17/06/38/shawarma-6631481_1280.jpg"
+  },
+  {
+    "id": "R15",
+    "name": "PizzaPoint",
+    "cuisine": "Italian",
+    "location": "Rajajinagar, Bangalore",
+    "rating": 4.5,
+    "reviews": 765,
+    "image": "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg"
+  },
+  {
+    "id": "R16",
+    "name": "BengaliBites",
+    "cuisine": "Bengali",
+    "location": "Vijayanagar, Bangalore",
+    "rating": 4.0,
+    "reviews": 280,
+    "image": "https://cdn.pixabay.com/photo/2019/05/27/07/44/roshogolla-4233740_1280.jpg"
+  },
+  {
+    "id": "R17",
+    "name": "FrenchFork",
+    "cuisine": "French",
+    "location": "Ulsoor, Bangalore",
+    "rating": 4.3,
+    "reviews": 489,
+    "image": "https://cdn.pixabay.com/photo/2017/05/07/08/56/french-cuisine-2294362_1280.jpg"
+  },
+  {
+    "id": "R18",
+    "name": "TandooriTales",
+    "cuisine": "Mughlai",
+    "location": "Kalyan Nagar, Bangalore",
+    "rating": 4.4,
+    "reviews": 620,
+    "image": "https://cdn.pixabay.com/photo/2023/01/29/20/30/tandoori-chicken-7753886_1280.jpg"
+  },
+  {
+    "id": "R19",
+    "name": "DesiDelights",
+    "cuisine": "Fusion",
+    "location": "JP Nagar, Bangalore",
+    "rating": 4.2,
+    "reviews": 458,
+    "image": "https://cdn.pixabay.com/photo/2021/11/16/16/06/food-6800018_1280.jpg"
+  },
+  {
+    "id": "R20",
+    "name": "The Dumpling Den",
+    "cuisine": "Chinese",
+    "location": "RT Nagar, Bangalore",
+    "rating": 4.0,
+    "reviews": 310,
+    "image": "https://cdn.pixabay.com/photo/2022/03/21/14/20/dumplings-7082485_1280.jpg"
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

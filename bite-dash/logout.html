@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logged Out - BiteDash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background-color: #ffe4b5; /* Light orange (moccasin shade) */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      max-width: 480px;
+      width: 90%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: wave 2s infinite;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .home-btn {
+      background-color: #ff8800;
+      color: #fff;
+      padding: 12px 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .home-btn:hover {
+      background-color: #ff6600;
+    }
+
+    @keyframes wave {
+      0%, 60%, 100% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(10deg);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="emoji">👋</div>
+    <h1>You’ve Successfully Logged Out</h1>
+    <p>Thank you for using <strong>BiteDash</strong>. See you again soon! 🛵🍔</p>
+    <a href="index.html" class="home-btn">Go to Homepage</a>
+  </div>
+</body>
+</html>

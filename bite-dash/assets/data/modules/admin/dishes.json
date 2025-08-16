@@ -1,0 +1,10 @@
+[
+  {
+    "dishId": "D201",
+    "restaurantId": "R101",
+    "name": "Paneer Tikka",
+    "price": 260,
+    "category": "Starters",
+    "available": true
+  }
+]

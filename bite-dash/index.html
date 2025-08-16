@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BiteDash🛵</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(120deg, #ff8a00, #e52e71);
+      padding: 1rem 2rem;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    #loginBtn {
+      background: white;
+      color: #e52e71;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .restaurant-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .restaurant-card:hover {
+      transform: scale(1.02);
+    }
+    .restaurant-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .restaurant-card h3 {
+      margin: 0;
+      padding: 1rem;
+      font-size: 1.2rem;
+      color: #333;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      margin-top: 2rem;
+    }
+    .footer-section {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+      padding-bottom: 1.5rem;
+    }
+    .footer-section div {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
+    .footer-section h4 {
+      margin-bottom: 0.5rem;
+      color: #ff8a00;
+    }
+    .footer-bottom {
+      color: #ccc;
+      font-size: 0.85rem;
+      border-top: 1px solid #444;
+      padding-top: 1rem;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">BiteDash🛵</div>
+    <button id="loginBtn">Login</button>
+  </header>
+
+  <div class="restaurant-grid" id="restaurantGrid">
+    <!-- Restaurants will be loaded here -->
+  </div>
+
+  <footer>
+    <div class="footer-section">
+      <div>
+        <h4>About Us</h4>
+        <p>BiteDash is a fast, reliable, and AI-enhanced food delivery platform designed to connect users with their favorite restaurants in seconds.
+We offer a seamless browsing and ordering experience, featuring smart recommendations, live delivery tracking, and chatbot support.
+Our network includes a wide range of top-rated restaurants and verified delivery partners to ensure quality and satisfaction.
+With BiteDash, users can explore dishes, save favorites, and enjoy lightning-fast delivery with real-time updates.
+For restaurants and delivery partners, our platform provides powerful tools and dashboards to manage operations efficiently.
+BiteDash is built to serve modern cravings with speed, convenience, and intelligent technology.</p>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <p>Email: <a href="mailto:support@bitedash.com">support@bitedash.com</a></p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Location: Bangalore, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 BiteDash. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const maxRestaurants = 6;
+    fetch('assets/data/restaurants.json')
+      .then(res => res.json())
+      .then(data => {
+        const grid = document.getElementById('restaurantGrid');
+        const sliced = data.slice(0, maxRestaurants);
+        sliced.forEach(restaurant => {
+          const card = document.createElement('div');
+          card.className = 'restaurant-card';
+          card.innerHTML = `
+            <img src="${restaurant.image}" alt="${restaurant.name}" />
+            <h3>${restaurant.name}</h3>
+          `;
+          card.addEventListener('click', () => {
+            alert("🚫 Please login to view full restaurant details and dishes.");
+            window.location.href = 'login.html';
+          });
+          grid.appendChild(card);
+        });
+      });
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      window.location.href = 'login.html';
+    });
+  </script>
+
+</body>
+</html>

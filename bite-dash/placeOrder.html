@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BiteDash – Place Order</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f2;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff7e3c;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #ff7e3c;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    button {
+      background-color: #ff7e3c;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #e56724;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+
+    table th, table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #fff2ea;
+    }
+
+    .totals {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .empty {
+      text-align: center;
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>🍽️ BiteDash – Confirm Your Order</header>
+
+  <div class="container">
+    <h2>🚚 Delivery Details</h2>
+    <form onsubmit="return submitOrder()">
+      <label for="name">👤 Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">📞 Phone Number</label>
+      <input type="tel" id="phone" required>
+
+      <label for="altPhone">📱 Alternate Phone (optional)</label>
+      <input type="tel" id="altPhone">
+
+      <label for="houseNo">🏠 House/Flat Number</label>
+      <input type="text" id="houseNo" required>
+
+      <label for="landmark">📍 Nearby Landmark</label>
+      <input type="text" id="landmark">
+
+      <label for="address">📬 Full Delivery Address</label>
+      <textarea id="address" required></textarea>
+
+      <label for="payment">💳 Payment Method</label>
+      <select id="payment" required>
+        <option value="">Select</option>
+        <option>Cash on Delivery</option>
+        <option>UPI</option>
+        <option>Card Payment</option>
+        <option>Net Banking</option>
+      </select>
+
+      <h2>🛒 Your Cart</h2>
+      <table id="cartTable">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="totals" id="totals"></div>
+
+      <div class="empty" id="emptyMsg"></div>
+
+      <button type="submit">✅ Place Order</button>
+    </form>
+  </div>
+
+  <script>
+    const cartData = JSON.parse(localStorage.getItem('cart'));
+    const tbody = document.querySelector("#cartTable tbody");
+    const totalsDiv = document.getElementById("totals");
+    const emptyMsg = document.getElementById("emptyMsg");
+
+    if (!cartData || cartData.length === 0) {
+      tbody.innerHTML = "";
+      emptyMsg.innerHTML = "🛑 Your cart is empty!";
+      document.querySelector("button").disabled = true;
+    } else {
+      let totalAmount = 0;
+      cartData.forEach(item => {
+        const row = document.createElement("tr");
+        const itemTotal = item.qty * item.price;
+        totalAmount += itemTotal;
+
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.qty}</td>
+          <td>₹${item.price}</td>
+          <td>₹${itemTotal}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      const cgst = totalAmount * 0.05;
+      const sgst = totalAmount * 0.05;
+      const grandTotal = totalAmount + cgst + sgst;
+
+      totalsDiv.innerHTML = `
+        <p>Subtotal: ₹${totalAmount.toFixed(2)}</p>
+        <p>CGST (5%): ₹${cgst.toFixed(2)}</p>
+        <p>SGST (5%): ₹${sgst.toFixed(2)}</p>
+        <p><strong>Grand Total: ₹${grandTotal.toFixed(2)}</strong></p>
+      `;
+    }
+
+    function submitOrder() {
+      if (!cartData || cartData.length === 0) {
+        alert("Your cart is empty.");
+        return false;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const house = document.getElementById("houseNo").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const payment = document.getElementById("payment").value.trim();
+
+      if (!name || !phone || !house || !address || !payment) {
+        alert("⚠️ Please fill all required fields.");
+        return false;
+      }
+
+      alert("🎉 Order placed successfully! Thank you for choosing BiteDash.");
+      localStorage.removeItem("cart");
+      window.location.href = "user.html";
+      return false;
+    }
+  </script>
+</body>
+</html>

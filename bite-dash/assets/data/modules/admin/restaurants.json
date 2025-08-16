@@ -1,0 +1,9 @@
+[
+  {
+    "restaurantId": "R101",
+    "name": "Spice Villa",
+    "location": "Koramangala",
+    "rating": 4.3,
+    "approved": true
+  }
+]

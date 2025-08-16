@@ -1,0 +1,9 @@
+[
+  {
+    "restaurantId": "R101",
+    "name": "Spice Villa",
+    "monthlyRevenue": 25800,
+    "rating": 4.3,
+    "totalOrders": 310
+  }
+]

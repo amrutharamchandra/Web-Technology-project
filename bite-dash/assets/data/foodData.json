@@ -1,0 +1,884 @@
+[
+  {
+    "id": "D001",
+    "restaurantId": "R01",
+    "name": "BBQ Chicken Wings",
+    "price": 346,
+    "rating": 4.0,
+    "orders": 213,
+    "image": "https://i.pinimg.com/1200x/04/53/7c/04537c6319ef222b92536c2ada0072c3.jpg"
+  },
+  {
+    "id": "D002",
+    "restaurantId": "R01",
+    "name": "Pepperoni Pizza",
+    "price": 359,
+    "rating": 3.7,
+    "orders": 562,
+    "image": "https://i.pinimg.com/1200x/64/0b/7f/640b7f4aa911b6ab1500faf9b7dae73d.jpg"
+  },
+  {
+    "id": "D003",
+    "restaurantId": "R01",
+    "name": "Waffles",
+    "price": 369,
+    "rating": 4.6,
+    "orders": 526,
+    "image": "https://i.pinimg.com/736x/33/31/fb/3331fb6f261f2ca78d50c48b83e3b118.jpg"
+  },
+  {
+    "id": "D004",
+    "restaurantId": "R01",
+    "name": "Fried Momos",
+    "price": 226,
+    "rating": 4.7,
+    "orders": 512,
+    "image": "https://i.pinimg.com/1200x/9f/4f/e2/9f4fe24694227616517902776bfbbf00.jpg"
+  },
+  {
+    "id": "D005",
+    "restaurantId": "R02",
+    "name": "Spaghetti Alfredo",
+    "price": 104,
+    "rating": 3.2,
+    "orders": 362,
+    "image": "https://i.pinimg.com/1200x/7a/2c/bc/7a2cbc391437f6197c2af7b920f1e012.jpg"
+  },
+  {
+    "id": "D006",
+    "restaurantId": "R02",
+    "name": "Chole Bhature",
+    "price": 209,
+    "rating": 4.2,
+    "orders": 164,
+    "image": "https://i.pinimg.com/736x/2d/a4/0b/2da40ba56dbf421d536aa380ccd544da.jpg"
+  },
+  {
+    "id": "D007",
+    "restaurantId": "R02",
+    "name": "Masala Dosa",
+    "price": 309,
+    "rating": 3.6,
+    "orders": 835,
+    "image": "https://i.pinimg.com/736x/3d/90/3c/3d903cf7ec8491cb7c0e286f75e9a2a2.jpg"
+  },
+  {
+    "id": "D008",
+    "restaurantId": "R02",
+    "name": "French Toast",
+    "price": 218,
+    "rating": 4.7,
+    "orders": 616,
+    "image": "https://i.pinimg.com/1200x/31/dc/1f/31dc1fa70e2da25defdcd685634a022e.jpg"
+  },
+  {
+    "id": "D009",
+    "restaurantId": "R02",
+    "name": "Mexican Rice",
+    "price": 130,
+    "rating": 4.2,
+    "orders": 744,
+    "image": "https://i.pinimg.com/1200x/af/bb/49/afbb4939dc3d72dff45e60e8bcf516a1.jpg"
+  },
+  {
+    "id": "D010",
+    "restaurantId": "R03",
+    "name": "Veggie Burger",
+    "price": 103,
+    "rating": 3.3,
+    "orders": 176,
+    "image": "https://source.unsplash.com/400x300/?food,VeggieBurger"
+  },
+  {
+    "id": "D011",
+    "restaurantId": "R03",
+    "name": "Masala Dosa",
+    "price": 123,
+    "rating": 4.7,
+    "orders": 853,
+    "image": "https://source.unsplash.com/400x300/?food,MasalaDosa"
+  },
+  {
+    "id": "D012",
+    "restaurantId": "R03",
+    "name": "Spaghetti Alfredo",
+    "price": 314,
+    "rating": 3.2,
+    "orders": 761,
+    "image": "https://source.unsplash.com/400x300/?food,SpaghettiAlfredo"
+  },
+  {
+    "id": "D013",
+    "restaurantId": "R03",
+    "name": "Pav Bhaji",
+    "price": 143,
+    "rating": 3.9,
+    "orders": 501,
+    "image": "https://source.unsplash.com/400x300/?food,PavBhaji"
+  },
+  {
+    "id": "D014",
+    "restaurantId": "R03",
+    "name": "Tandoori Chicken",
+    "price": 355,
+    "rating": 4.4,
+    "orders": 96,
+    "image": "https://source.unsplash.com/400x300/?food,TandooriChicken"
+  },
+  {
+    "id": "D015",
+    "restaurantId": "R04",
+    "name": "Veg Pulao",
+    "price": 134,
+    "rating": 3.4,
+    "orders": 113,
+    "image": "https://source.unsplash.com/400x300/?food,VegPulao"
+  },
+  {
+    "id": "D016",
+    "restaurantId": "R04",
+    "name": "Paneer Tikka",
+    "price": 366,
+    "rating": 4.4,
+    "orders": 690,
+    "image": "https://source.unsplash.com/400x300/?food,PaneerTikka"
+  },
+  {
+    "id": "D017",
+    "restaurantId": "R04",
+    "name": "Fish Tacos",
+    "price": 384,
+    "rating": 4.7,
+    "orders": 860,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D018",
+    "restaurantId": "R04",
+    "name": "Mexican Rice",
+    "price": 395,
+    "rating": 3.7,
+    "orders": 899,
+    "image": "https://source.unsplash.com/400x300/?food,MexicanRice"
+  },
+  {
+    "id": "D019",
+    "restaurantId": "R04",
+    "name": "Margherita Pizza",
+    "price": 344,
+    "rating": 4.2,
+    "orders": 111,
+    "image": "https://source.unsplash.com/400x300/?food,MargheritaPizza"
+  },
+  {
+    "id": "D020",
+    "restaurantId": "R04",
+    "name": "French Toast",
+    "price": 107,
+    "rating": 4.2,
+    "orders": 594,
+    "image": "https://source.unsplash.com/400x300/?food,FrenchToast"
+  },
+  {
+    "id": "D021",
+    "restaurantId": "R05",
+    "name": "Fish Tacos",
+    "price": 264,
+    "rating": 3.5,
+    "orders": 655,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D022",
+    "restaurantId": "R05",
+    "name": "Spaghetti Alfredo",
+    "price": 378,
+    "rating": 3.3,
+    "orders": 537,
+    "image": "https://source.unsplash.com/400x300/?food,SpaghettiAlfredo"
+  },
+  {
+    "id": "D023",
+    "restaurantId": "R05",
+    "name": "Egg Fried Rice",
+    "price": 136,
+    "rating": 4.6,
+    "orders": 992,
+    "image": "https://source.unsplash.com/400x300/?food,EggFriedRice"
+  },
+  {
+    "id": "D024",
+    "restaurantId": "R05",
+    "name": "Tandoori Chicken",
+    "price": 187,
+    "rating": 3.5,
+    "orders": 760,
+    "image": "https://source.unsplash.com/400x300/?food,TandooriChicken"
+  },
+  {
+    "id": "D025",
+    "restaurantId": "R05",
+    "name": "Waffles",
+    "price": 187,
+    "rating": 4.4,
+    "orders": 660,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  },
+  {
+    "id": "D026",
+    "restaurantId": "R06",
+    "name": "Butter Chicken",
+    "price": 263,
+    "rating": 3.5,
+    "orders": 788,
+    "image": "https://source.unsplash.com/400x300/?food,ButterChicken"
+  },
+  {
+    "id": "D027",
+    "restaurantId": "R06",
+    "name": "Margherita Pizza",
+    "price": 140,
+    "rating": 4.6,
+    "orders": 615,
+    "image": "https://source.unsplash.com/400x300/?food,MargheritaPizza"
+  },
+  {
+    "id": "D028",
+    "restaurantId": "R06",
+    "name": "Kathi Roll",
+    "price": 297,
+    "rating": 3.9,
+    "orders": 613,
+    "image": "https://source.unsplash.com/400x300/?food,KathiRoll"
+  },
+  {
+    "id": "D029",
+    "restaurantId": "R06",
+    "name": "Spring Rolls",
+    "price": 172,
+    "rating": 4.7,
+    "orders": 542,
+    "image": "https://source.unsplash.com/400x300/?food,SpringRolls"
+  },
+  {
+    "id": "D030",
+    "restaurantId": "R07",
+    "name": "Masala Dosa",
+    "price": 269,
+    "rating": 4.5,
+    "orders": 779,
+    "image": "https://source.unsplash.com/400x300/?food,MasalaDosa"
+  },
+  {
+    "id": "D031",
+    "restaurantId": "R07",
+    "name": "Egg Fried Rice",
+    "price": 246,
+    "rating": 3.4,
+    "orders": 989,
+    "image": "https://source.unsplash.com/400x300/?food,EggFriedRice"
+  },
+  {
+    "id": "D032",
+    "restaurantId": "R07",
+    "name": "Fish Tacos",
+    "price": 290,
+    "rating": 4.2,
+    "orders": 932,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D033",
+    "restaurantId": "R07",
+    "name": "Waffles",
+    "price": 103,
+    "rating": 4.6,
+    "orders": 484,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  },
+  {
+    "id": "D034",
+    "restaurantId": "R08",
+    "name": "Veggie Burger",
+    "price": 176,
+    "rating": 4.4,
+    "orders": 772,
+    "image": "https://source.unsplash.com/400x300/?food,VeggieBurger"
+  },
+  {
+    "id": "D035",
+    "restaurantId": "R08",
+    "name": "Fried Momos",
+    "price": 361,
+    "rating": 4.9,
+    "orders": 254,
+    "image": "https://source.unsplash.com/400x300/?food,FriedMomos"
+  },
+  {
+    "id": "D036",
+    "restaurantId": "R08",
+    "name": "Fish Tacos",
+    "price": 273,
+    "rating": 3.7,
+    "orders": 547,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D037",
+    "restaurantId": "R08",
+    "name": "Veg Pulao",
+    "price": 220,
+    "rating": 3.2,
+    "orders": 215,
+    "image": "https://source.unsplash.com/400x300/?food,VegPulao"
+  },
+  {
+    "id": "D038",
+    "restaurantId": "R08",
+    "name": "Waffles",
+    "price": 190,
+    "rating": 3.0,
+    "orders": 953,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  },
+  {
+    "id": "D039",
+    "restaurantId": "R08",
+    "name": "French Toast",
+    "price": 374,
+    "rating": 3.5,
+    "orders": 940,
+    "image": "https://source.unsplash.com/400x300/?food,FrenchToast"
+  },
+  {
+    "id": "D040",
+    "restaurantId": "R09",
+    "name": "BBQ Chicken Wings",
+    "price": 324,
+    "rating": 4.6,
+    "orders": 549,
+    "image": "https://source.unsplash.com/400x300/?food,BBQChickenWings"
+  },
+  {
+    "id": "D041",
+    "restaurantId": "R09",
+    "name": "Fried Momos",
+    "price": 383,
+    "rating": 3.7,
+    "orders": 709,
+    "image": "https://source.unsplash.com/400x300/?food,FriedMomos"
+  },
+  {
+    "id": "D042",
+    "restaurantId": "R09",
+    "name": "Tandoori Chicken",
+    "price": 393,
+    "rating": 4.9,
+    "orders": 636,
+    "image": "https://source.unsplash.com/400x300/?food,TandooriChicken"
+  },
+  {
+    "id": "D043",
+    "restaurantId": "R09",
+    "name": "Chicken Biryani",
+    "price": 355,
+    "rating": 4.0,
+    "orders": 62,
+    "image": "https://source.unsplash.com/400x300/?food,ChickenBiryani"
+  },
+  {
+    "id": "D044",
+    "restaurantId": "R10",
+    "name": "Butter Chicken",
+    "price": 224,
+    "rating": 4.4,
+    "orders": 729,
+    "image": "https://source.unsplash.com/400x300/?food,ButterChicken"
+  },
+  {
+    "id": "D045",
+    "restaurantId": "R10",
+    "name": "Mutton Rogan Josh",
+    "price": 257,
+    "rating": 4.4,
+    "orders": 515,
+    "image": "https://source.unsplash.com/400x300/?food,MuttonRoganJosh"
+  },
+  {
+    "id": "D046",
+    "restaurantId": "R10",
+    "name": "Pepperoni Pizza",
+    "price": 285,
+    "rating": 4.0,
+    "orders": 653,
+    "image": "https://source.unsplash.com/400x300/?food,PepperoniPizza"
+  },
+  {
+    "id": "D047",
+    "restaurantId": "R10",
+    "name": "Pav Bhaji",
+    "price": 108,
+    "rating": 3.5,
+    "orders": 79,
+    "image": "https://source.unsplash.com/400x300/?food,PavBhaji"
+  },
+  {
+    "id": "D048",
+    "restaurantId": "R10",
+    "name": "Margherita Pizza",
+    "price": 176,
+    "rating": 3.1,
+    "orders": 660,
+    "image": "https://source.unsplash.com/400x300/?food,MargheritaPizza"
+  },
+  {
+    "id": "D049",
+    "restaurantId": "R11",
+    "name": "Sushi Platter",
+    "price": 204,
+    "rating": 3.2,
+    "orders": 172,
+    "image": "https://source.unsplash.com/400x300/?food,SushiPlatter"
+  },
+  {
+    "id": "D050",
+    "restaurantId": "R11",
+    "name": "Fish Tacos",
+    "price": 305,
+    "rating": 3.4,
+    "orders": 833,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D051",
+    "restaurantId": "R11",
+    "name": "Mexican Rice",
+    "price": 384,
+    "rating": 4.3,
+    "orders": 416,
+    "image": "https://source.unsplash.com/400x300/?food,MexicanRice"
+  },
+  {
+    "id": "D052",
+    "restaurantId": "R11",
+    "name": "Waffles",
+    "price": 238,
+    "rating": 3.1,
+    "orders": 535,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  },
+  {
+    "id": "D053",
+    "restaurantId": "R12",
+    "name": "BBQ Chicken Wings",
+    "price": 322,
+    "rating": 4.4,
+    "orders": 831,
+    "image": "https://source.unsplash.com/400x300/?food,BBQChickenWings"
+  },
+  {
+    "id": "D054",
+    "restaurantId": "R12",
+    "name": "Veg Pulao",
+    "price": 261,
+    "rating": 3.4,
+    "orders": 137,
+    "image": "https://source.unsplash.com/400x300/?food,VegPulao"
+  },
+  {
+    "id": "D055",
+    "restaurantId": "R12",
+    "name": "Kathi Roll",
+    "price": 220,
+    "rating": 3.0,
+    "orders": 525,
+    "image": "https://source.unsplash.com/400x300/?food,KathiRoll"
+  },
+  {
+    "id": "D056",
+    "restaurantId": "R12",
+    "name": "Spring Rolls",
+    "price": 228,
+    "rating": 3.5,
+    "orders": 218,
+    "image": "https://source.unsplash.com/400x300/?food,SpringRolls"
+  },
+  {
+    "id": "D057",
+    "restaurantId": "R12",
+    "name": "Spaghetti Alfredo",
+    "price": 349,
+    "rating": 3.8,
+    "orders": 675,
+    "image": "https://source.unsplash.com/400x300/?food,SpaghettiAlfredo"
+  },
+  {
+    "id": "D058",
+    "restaurantId": "R12",
+    "name": "Chole Bhature",
+    "price": 267,
+    "rating": 4.3,
+    "orders": 345,
+    "image": "https://source.unsplash.com/400x300/?food,CholeBhature"
+  },
+  {
+    "id": "D059",
+    "restaurantId": "R13",
+    "name": "Spring Rolls",
+    "price": 182,
+    "rating": 3.8,
+    "orders": 880,
+    "image": "https://source.unsplash.com/400x300/?food,SpringRolls"
+  },
+  {
+    "id": "D060",
+    "restaurantId": "R13",
+    "name": "Egg Fried Rice",
+    "price": 191,
+    "rating": 3.4,
+    "orders": 667,
+    "image": "https://source.unsplash.com/400x300/?food,EggFriedRice"
+  },
+  {
+    "id": "D061",
+    "restaurantId": "R13",
+    "name": "Fish Tacos",
+    "price": 172,
+    "rating": 4.0,
+    "orders": 887,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D062",
+    "restaurantId": "R13",
+    "name": "French Toast",
+    "price": 224,
+    "rating": 3.6,
+    "orders": 310,
+    "image": "https://source.unsplash.com/400x300/?food,FrenchToast"
+  },
+  {
+    "id": "D063",
+    "restaurantId": "R13",
+    "name": "Pav Bhaji",
+    "price": 279,
+    "rating": 4.1,
+    "orders": 542,
+    "image": "https://source.unsplash.com/400x300/?food,PavBhaji"
+  },
+  {
+    "id": "D064",
+    "restaurantId": "R13",
+    "name": "Kathi Roll",
+    "price": 306,
+    "rating": 4.3,
+    "orders": 192,
+    "image": "https://source.unsplash.com/400x300/?food,KathiRoll"
+  },
+  {
+    "id": "D065",
+    "restaurantId": "R14",
+    "name": "Veg Pulao",
+    "price": 236,
+    "rating": 3.5,
+    "orders": 126,
+    "image": "https://source.unsplash.com/400x300/?food,VegPulao"
+  },
+  {
+    "id": "D066",
+    "restaurantId": "R14",
+    "name": "Fried Momos",
+    "price": 183,
+    "rating": 3.5,
+    "orders": 467,
+    "image": "https://source.unsplash.com/400x300/?food,FriedMomos"
+  },
+  {
+    "id": "D067",
+    "restaurantId": "R14",
+    "name": "Waffles",
+    "price": 175,
+    "rating": 3.7,
+    "orders": 168,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  },
+  {
+    "id": "D068",
+    "restaurantId": "R14",
+    "name": "Paneer Tikka",
+    "price": 101,
+    "rating": 4.2,
+    "orders": 895,
+    "image": "https://source.unsplash.com/400x300/?food,PaneerTikka"
+  },
+  {
+    "id": "D069",
+    "restaurantId": "R15",
+    "name": "Veggie Burger",
+    "price": 141,
+    "rating": 3.0,
+    "orders": 972,
+    "image": "https://source.unsplash.com/400x300/?food,VeggieBurger"
+  },
+  {
+    "id": "D070",
+    "restaurantId": "R15",
+    "name": "Pasta Arrabiata",
+    "price": 394,
+    "rating": 3.6,
+    "orders": 616,
+    "image": "https://source.unsplash.com/400x300/?food,PastaArrabiata"
+  },
+  {
+    "id": "D071",
+    "restaurantId": "R15",
+    "name": "Waffles",
+    "price": 246,
+    "rating": 3.2,
+    "orders": 130,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  },
+  {
+    "id": "D072",
+    "restaurantId": "R15",
+    "name": "Chole Bhature",
+    "price": 368,
+    "rating": 3.4,
+    "orders": 217,
+    "image": "https://source.unsplash.com/400x300/?food,CholeBhature"
+  },
+  {
+    "id": "D073",
+    "restaurantId": "R15",
+    "name": "Fried Momos",
+    "price": 168,
+    "rating": 3.1,
+    "orders": 614,
+    "image": "https://source.unsplash.com/400x300/?food,FriedMomos"
+  },
+  {
+    "id": "D074",
+    "restaurantId": "R15",
+    "name": "Fish Tacos",
+    "price": 330,
+    "rating": 3.5,
+    "orders": 741,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D075",
+    "restaurantId": "R16",
+    "name": "Pasta Arrabiata",
+    "price": 360,
+    "rating": 3.2,
+    "orders": 580,
+    "image": "https://source.unsplash.com/400x300/?food,PastaArrabiata"
+  },
+  {
+    "id": "D076",
+    "restaurantId": "R16",
+    "name": "Masala Dosa",
+    "price": 287,
+    "rating": 4.0,
+    "orders": 733,
+    "image": "https://source.unsplash.com/400x300/?food,MasalaDosa"
+  },
+  {
+    "id": "D077",
+    "restaurantId": "R16",
+    "name": "Veg Pulao",
+    "price": 142,
+    "rating": 4.3,
+    "orders": 729,
+    "image": "https://source.unsplash.com/400x300/?food,VegPulao"
+  },
+  {
+    "id": "D078",
+    "restaurantId": "R16",
+    "name": "Fried Momos",
+    "price": 162,
+    "rating": 4.6,
+    "orders": 403,
+    "image": "https://source.unsplash.com/400x300/?food,FriedMomos"
+  },
+  {
+    "id": "D079",
+    "restaurantId": "R16",
+    "name": "Waffles",
+    "price": 329,
+    "rating": 3.5,
+    "orders": 753,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  },
+  {
+    "id": "D080",
+    "restaurantId": "R17",
+    "name": "Pasta Arrabiata",
+    "price": 199,
+    "rating": 3.9,
+    "orders": 670,
+    "image": "https://source.unsplash.com/400x300/?food,PastaArrabiata"
+  },
+  {
+    "id": "D081",
+    "restaurantId": "R17",
+    "name": "Fish Tacos",
+    "price": 208,
+    "rating": 3.1,
+    "orders": 225,
+    "image": "https://source.unsplash.com/400x300/?food,FishTacos"
+  },
+  {
+    "id": "D082",
+    "restaurantId": "R17",
+    "name": "Chicken Shawarma",
+    "price": 126,
+    "rating": 4.7,
+    "orders": 123,
+    "image": "https://source.unsplash.com/400x300/?food,ChickenShawarma"
+  },
+  {
+    "id": "D083",
+    "restaurantId": "R17",
+    "name": "Mutton Rogan Josh",
+    "price": 290,
+    "rating": 5.0,
+    "orders": 292,
+    "image": "https://source.unsplash.com/400x300/?food,MuttonRoganJosh"
+  },
+  {
+    "id": "D084",
+    "restaurantId": "R17",
+    "name": "Mexican Rice",
+    "price": 278,
+    "rating": 3.7,
+    "orders": 355,
+    "image": "https://source.unsplash.com/400x300/?food,MexicanRice"
+  },
+  {
+    "id": "D085",
+    "restaurantId": "R18",
+    "name": "Schezwan Noodles",
+    "price": 131,
+    "rating": 3.7,
+    "orders": 1000,
+    "image": "https://source.unsplash.com/400x300/?food,SchezwanNoodles"
+  },
+  {
+    "id": "D086",
+    "restaurantId": "R18",
+    "name": "Chicken Biryani",
+    "price": 217,
+    "rating": 3.8,
+    "orders": 413,
+    "image": "https://source.unsplash.com/400x300/?food,ChickenBiryani"
+  },
+  {
+    "id": "D087",
+    "restaurantId": "R18",
+    "name": "Spring Rolls",
+    "price": 198,
+    "rating": 3.1,
+    "orders": 976,
+    "image": "https://source.unsplash.com/400x300/?food,SpringRolls"
+  },
+  {
+    "id": "D088",
+    "restaurantId": "R18",
+    "name": "Mutton Rogan Josh",
+    "price": 215,
+    "rating": 4.5,
+    "orders": 754,
+    "image": "https://source.unsplash.com/400x300/?food,MuttonRoganJosh"
+  },
+  {
+    "id": "D089",
+    "restaurantId": "R19",
+    "name": "Kathi Roll",
+    "price": 283,
+    "rating": 4.0,
+    "orders": 956,
+    "image": "https://source.unsplash.com/400x300/?food,KathiRoll"
+  },
+  {
+    "id": "D090",
+    "restaurantId": "R19",
+    "name": "Paneer Tikka",
+    "price": 241,
+    "rating": 3.6,
+    "orders": 59,
+    "image": "https://source.unsplash.com/400x300/?food,PaneerTikka"
+  },
+  {
+    "id": "D091",
+    "restaurantId": "R19",
+    "name": "Chicken Biryani",
+    "price": 266,
+    "rating": 3.4,
+    "orders": 274,
+    "image": "https://source.unsplash.com/400x300/?food,ChickenBiryani"
+  },
+  {
+    "id": "D092",
+    "restaurantId": "R19",
+    "name": "Pav Bhaji",
+    "price": 120,
+    "rating": 4.2,
+    "orders": 997,
+    "image": "https://source.unsplash.com/400x300/?food,PavBhaji"
+  },
+  {
+    "id": "D093",
+    "restaurantId": "R19",
+    "name": "Pasta Arrabiata",
+    "price": 128,
+    "rating": 4.9,
+    "orders": 656,
+    "image": "https://source.unsplash.com/400x300/?food,PastaArrabiata"
+  },
+  {
+    "id": "D094",
+    "restaurantId": "R19",
+    "name": "Spaghetti Alfredo",
+    "price": 312,
+    "rating": 4.0,
+    "orders": 897,
+    "image": "https://source.unsplash.com/400x300/?food,SpaghettiAlfredo"
+  },
+  {
+    "id": "D095",
+    "restaurantId": "R20",
+    "name": "Chicken Shawarma",
+    "price": 343,
+    "rating": 3.7,
+    "orders": 191,
+    "image": "https://source.unsplash.com/400x300/?food,ChickenShawarma"
+  },
+  {
+    "id": "D096",
+    "restaurantId": "R20",
+    "name": "Spring Rolls",
+    "price": 275,
+    "rating": 3.4,
+    "orders": 498,
+    "image": "https://source.unsplash.com/400x300/?food,SpringRolls"
+  },
+  {
+    "id": "D097",
+    "restaurantId": "R20",
+    "name": "Kathi Roll",
+    "price": 379,
+    "rating": 3.7,
+    "orders": 297,
+    "image": "https://source.unsplash.com/400x300/?food,KathiRoll"
+  },
+  {
+    "id": "D098",
+    "restaurantId": "R20",
+    "name": "Waffles",
+    "price": 100,
+    "rating": 3.3,
+    "orders": 229,
+    "image": "https://source.unsplash.com/400x300/?food,Waffles"
+  }
+]

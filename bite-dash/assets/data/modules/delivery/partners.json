@@ -1,0 +1,14 @@
+[
+  {
+    "partnerId": "DP101",
+    "name": "Rahul Sharma",
+    "phone": "+91-9998887770",
+    "zone": "South Zone"
+  },
+  {
+    "partnerId": "DP102",
+    "name": "Priya Menon",
+    "phone": "+91-9998877665",
+    "zone": "North Zone"
+  }
+]

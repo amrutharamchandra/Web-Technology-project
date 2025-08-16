@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BiteDash – Delivery Partner Dashboard</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      background: #f8f8f8;
+    }
+    .sidebar {
+      width: 70px;
+      background: #ff6e40;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .sidebar button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      margin: 20px 0;
+      cursor: pointer;
+      position: relative;
+    }
+    .sidebar button:hover::after {
+      content: attr(title);
+      position: absolute;
+      left: 70px;
+      background: #444;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    h1 {
+      background-color: #ff6e40;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .panel {
+      display: none;
+    }
+    .panel.active {
+      display: block;
+    }
+    .order-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .order-card p {
+      margin: 5px 0;
+    }
+    .deliver-btn {
+      margin-top: 10px;
+      background: #e45a2b;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .message-box {
+      background: #fff8e1;
+      padding: 15px;
+      border-left: 5px solid #ff6e40;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      color: #444;
+    }
+    canvas {
+      max-width: 300px;
+      margin: 10px 0;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button.submit-btn {
+      background: #ff6e40;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #successMsg {
+      color: green;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <button onclick="showPanel('dashboard')" title="Dashboard">📦</button>
+    <button onclick="showPanel('assigned')" title="Assigned Orders">🧾</button>
+    <button onclick="showPanel('completed')" title="Completed Orders">✅</button>
+    <button onclick="showPanel('profile')" title="Update Profile">👤</button>
+    <button onclick="location.href='logout.html'" title="Logout">🚪</button>
+  </div>
+
+  <div class="content">
+    <h1>🛵 BiteDash – Delivery Partner Dashboard</h1>
+
+    <div class="panel active" id="dashboard">
+      <h2>📦 Dashboard Overview</h2>
+      <p>Welcome back! Check your assigned deliveries, completed orders, and update your profile here.</p>
+    </div>
+
+    <div class="panel" id="assigned">
+      <h2>🧾 Assigned Orders</h2>
+      <div id="assignedOrders"></div>
+    </div>
+
+    <div class="panel" id="completed">
+      <h2>✅ Completed Orders</h2>
+      <div class="message-box">
+        🎉 Great job! Here's a summary of your delivered orders.
+      </div>
+      <canvas id="todayChart"></canvas>
+      <canvas id="weekChart"></canvas>
+      <div id="completedOrders"></div>
+    </div>
+
+    <div class="panel" id="profile">
+      <h2>👤 Update Profile</h2>
+      <form onsubmit="event.preventDefault(); updateProfile();">
+        <input type="text" placeholder="Full Name" required />
+        <input type="text" placeholder="Phone Number" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="text" placeholder="Vehicle Number" required />
+        <button class="submit-btn" type="submit">Update</button>
+        <div id="successMsg"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function loadAssignedOrders() {
+      const container = document.getElementById("assignedOrders");
+      container.innerHTML = "";
+      const orders = [
+        { user: "Riya", phone: "9876543210", food: "Veg Biryani", from: "Biryani House" },
+        { user: "Amit", phone: "9123456780", food: "Paneer Wrap", from: "Wrapster" }
+      ];
+      orders.forEach(order => {
+        const div = document.createElement("div");
+        div.className = "order-card";
+        div.innerHTML = `
+          <p><strong>User:</strong> ${order.user}</p>
+          <p><strong>Phone:</strong> ${order.phone}</p>
+          <p><strong>Food:</strong> ${order.food}</p>
+          <p><strong>Restaurant:</strong> ${order.from}</p>
+          <button class="deliver-btn" onclick="markDelivered(this)">Delivered</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function markDelivered(button) {
+      button.textContent = "✔ Delivered";
+      button.disabled = true;
+      button.style.background = "#d64e22";
+    }
+
+    function updateProfile() {
+      document.getElementById("successMsg").textContent = "✅ Profile updated successfully!";
+    }
+
+    function drawCharts() {
+      new Chart(document.getElementById("todayChart"), {
+        type: 'bar',
+        data: {
+          labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+          datasets: [{
+            label: "Today’s Deliveries",
+            backgroundColor: "#ff6e40",
+            data: [3, 5, 2, 4, 6]
+          }]
+        }
+      });
+
+      new Chart(document.getElementById("weekChart"), {
+        type: 'line',
+        data: {
+          labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+          datasets: [{
+            label: "Weekly Deliveries",
+            borderColor: "#ff6e40",
+            data: [15, 22, 18, 24],
+            fill: false
+          }]
+        }
+      });
+    }
+
+    window.onload = () => {
+      loadAssignedOrders();
+      drawCharts();
+    };
+  </script>
+</body>
+</html>

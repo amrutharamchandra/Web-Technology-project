@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BiteDash | CEO Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { display: flex; height: 100vh; background: #f5f5f5; }
+    .sidebar {
+      width: 70px;
+      background: #ff6e40;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+    .sidebar button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      margin: 20px 0;
+      cursor: pointer;
+      position: relative;
+    }
+    .sidebar button:hover::after {
+      content: attr(title);
+      position: absolute;
+      left: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #444;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .panel {
+      display: none;
+    }
+    .panel.active {
+      display: block;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .chart-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 700px;
+    }
+    canvas {
+      width: 100% !important;
+      height: 300px !important;
+    }
+    .desc {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+      max-width: 700px;
+    }
+    .welcome {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 20px;
+      background: #fff3e0;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <button title="Summary" onclick="showPanel('summary')">📊</button>
+  <button title="Revenue" onclick="showPanel('revenue')">💰</button>
+  <button title="Delivery Stats" onclick="showPanel('delivery')">🛵</button>
+  <button title="Items" onclick="showPanel('items')">🍽️</button>
+  <button title="Users" onclick="showPanel('users')">👥</button>
+  <button title="Logout" onclick="location.href='logout.html'">🔓</button>
+
+</div>
+
+<div class="content">
+  <div class="welcome">
+    <h2>Welcome, CEO 🧑‍💼</h2>
+    <p>This dashboard gives you a high-level overview of BiteDash’s performance. Use the icons on the left to explore revenue trends, delivery performance, popular menu items, and customer engagement insights. Each section includes visual analytics and explanations to help you make strategic decisions efficiently.</p>
+  </div>
+
+  <div id="summary" class="panel active">
+    <h2>📊 Overall Summary</h2>
+    <div class="chart-container">
+      <canvas id="summaryChart"></canvas>
+    </div>
+    <div class="desc">
+      The overall performance chart represents the key growth metrics of BiteDash including user engagement, restaurant additions, and total orders across the platform over the last 12 months. This chart helps track whether the platform is expanding its user base, how frequently orders are being placed, and the rate of partner onboarding. A consistent upward trend indicates strong platform health and effective operational strategies.
+    </div>
+  </div>
+
+  <div id="revenue" class="panel">
+    <h2>💰 Revenue Analysis</h2>
+    <div class="chart-container">
+      <canvas id="revenueChart"></canvas>
+    </div>
+    <div class="desc">
+      The revenue chart displays monthly earnings (in ₹) for the year 2025. Peaks in the chart suggest high ordering volumes during festive or promotional periods, while dips may indicate off-season times. This data helps identify the most profitable months and supports planning seasonal marketing campaigns to optimize income. For instance, revenue in June: ₹5,20,000, July: ₹6,10,000, showing a +17% growth.
+    </div>
+  </div>
+
+  <div id="delivery" class="panel">
+    <h2>🛵 Delivery Performance</h2>
+    <div class="chart-container">
+      <canvas id="deliveryChart"></canvas>
+    </div>
+    <div class="desc">
+      The delivery performance chart compares successful deliveries, delays, and cancellations across the network. High delivery success rates reflect operational efficiency, while spikes in delays or cancellations require reviewing fleet performance or traffic impact. These insights help optimize delivery partner allocation and ensure customer satisfaction remains high.
+    </div>
+  </div>
+
+  <div id="items" class="panel">
+    <h2>🍽️ Top Performing Items</h2>
+    <div class="chart-container">
+      <canvas id="itemsChart"></canvas>
+    </div>
+    <div class="desc">
+      This bar chart visualizes the most popular menu items across all restaurants. Understanding which dishes are frequently ordered helps in shaping promotions and suggesting add-on items. Items like Biryani, Burger, and Pasta dominate the order charts, indicating popular user preferences which should be prioritized on the homepage.
+    </div>
+  </div>
+
+  <div id="users" class="panel">
+    <h2>👥 User Engagement</h2>
+    <div class="chart-container">
+      <canvas id="usersChart"></canvas>
+    </div>
+    <div class="desc">
+      The engagement chart shows how many users are active daily, weekly, and monthly. It helps analyze customer retention and platform stickiness. Regular engagement indicates user satisfaction and loyalty. Drop-offs could signal issues in delivery time, food quality, or app usability. It’s crucial to correlate this data with feedback to improve service.
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  function showPanel(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  new Chart(document.getElementById("summaryChart"), {
+    type: "line",
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      datasets: [{
+        label: "Total Orders",
+        data: [1200, 1500, 1800, 1600, 2100, 2500],
+        borderColor: "#ff6e40",
+        fill: false
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("revenueChart"), {
+    type: "bar",
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      datasets: [{
+        label: "Monthly Revenue (₹)",
+        data: [420000, 450000, 490000, 470000, 520000, 610000],
+        backgroundColor: "#66bb6a"
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("deliveryChart"), {
+    type: "doughnut",
+    data: {
+      labels: ["Successful", "Delayed", "Cancelled"],
+      datasets: [{
+        data: [82, 12, 6],
+        backgroundColor: ["#42a5f5", "#ffca28", "#ef5350"]
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("itemsChart"), {
+    type: "bar",
+    data: {
+      labels: ["Biryani", "Burger", "Pasta", "Pizza", "Fries"],
+      datasets: [{
+        label: "Orders",
+        data: [500, 430, 390, 320, 280],
+        backgroundColor: "#ab47bc"
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("usersChart"), {
+    type: "line",
+    data: {
+      labels: ["W1", "W2", "W3", "W4"],
+      datasets: [{
+        label: "Active Users",
+        data: [1500, 1600, 1550, 1700],
+        borderColor: "#26a69a",
+        fill: true,
+        backgroundColor: "rgba(38,166,154,0.2)"
+      }]
+    }
+  });
+</script>
+
+</body>
+</html>

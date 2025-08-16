@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>BiteDash – User Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+    body { display:flex; height:100vh; background:#f0f2f5; }
+
+    .sidebar {
+      width:70px; background:#ff6e40; display:flex; flex-direction:column; align-items:center;
+      padding:20px 0;
+    }
+    .sidebar button {
+      background:none; border:none; color:white; font-size:24px;
+      margin:20px 0; cursor:pointer; position:relative;
+    }
+    .sidebar button:hover::after {
+      content:attr(title); position:absolute; left:70px;
+      background:#444; color:#fff; padding:5px 10px; border-radius:5px;
+      font-size:12px; white-space:nowrap;
+    }
+
+    .content {
+      flex:1; display:flex; flex-direction:column; overflow:hidden;
+    }
+    header {
+      background:#ff6e40; color:white; padding:16px; font-size:20px;
+      text-align:center;
+    }
+
+    .main {
+      flex:1; display:flex; overflow:hidden;
+    }
+
+    .restaurant-list {
+      width:200px; overflow-y:auto; background:white; padding:10px;
+      border-right:2px solid #ddd;
+    }
+    .restaurant-item {
+      padding:8px; margin-bottom:8px; background:#fff; border-radius:6px;
+      cursor:pointer; transition:background 0.2s;
+    }
+    .restaurant-item:hover {
+      background:#ffe4c4;
+    }
+
+    .dishes-panel {
+      flex:1; padding:10px; overflow-y:auto;
+    }
+    .filters { display:flex; gap:10px; margin-bottom:10px; }
+    .filters input { padding:6px; border:1px solid #ccc; border-radius:4px; width:120px; }
+
+    .dish-grid {
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:15px;
+    }
+    .dish-card {
+      background:white; padding:10px; border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center;
+      position:relative;
+    }
+    .dish-card img {
+      width:100%; height:100px; object-fit:cover; border-radius:6px;
+    }
+    .dish-card h4 { margin:8px 0; color:#ff6e40; font-size:16px; }
+    .dish-card .price { color:green; font-weight:bold; }
+    .dish-card .heart {
+      position:absolute; top:8px; right:8px; cursor:pointer; font-size:18px; color:#ccc;
+    }
+    .dish-card .heart.saved { color:red; }
+    .add-btn {
+      background:#4caf50; color:white; padding:6px 12px; border:none;
+      border-radius:4px; cursor:pointer; margin-top:8px;
+    }
+    .add-btn:hover { background:#45a049; }
+
+    .cart-btn {
+      position:fixed; bottom:20px; right:20px;
+      background:orange; color:white; padding:10px 16px;
+      border:none; border-radius:6px; font-size:16px; cursor:pointer;
+      z-index:100;
+    }
+
+    .cart-panel {
+      position:fixed; right:0; top:0; width:300px; height:100%;
+      background:white; box-shadow:-2px 0 6px rgba(0,0,0,0.2);
+      transform:translateX(100%); transition:transform .3s;
+      padding:16px; overflow-y:auto; z-index:200;
+    }
+    .cart-panel.active { transform:translateX(0); }
+
+    .cart-item {
+      display:flex; justify-content:space-between; margin-bottom:10px;
+      border-bottom:1px solid #eee; padding-bottom:8px;
+    }
+    .cart-item span:first-child { flex:1; }
+
+    #checkoutBtn {
+      background:orange; color:white; padding:10px;
+      width:100%; border:none; border-radius:6px; font-size:16px;
+      cursor:pointer; margin-top:10px;
+    }
+    #checkoutBtn:hover { background:#e5533c; }
+
+    .overlay {
+      display:none; position:fixed; inset:0; background:rgba(0,0,0,0.3);
+      z-index:150;
+    }
+    .overlay.active { display:block; }
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <button title="Dashboard" onclick="showPanel('dashboard')">🏠</button>
+    <button title="Restaurants" onclick="showPanel('restaurants')">🍽️</button>
+    <button title="Favorites" onclick="showPanel('favorites')">❤️</button>
+    <button title="Cart" onclick="toggleCart()">🛒</button>
+    <button title="Logout" onclick="window.location.href='logout.html'">🔓</button>
+  </div>
+
+  <div class="content">
+    <header>🍔 BiteDash – User Dashboard</header>
+
+    <div class="main">
+      <div class="restaurant-list" id="restaurantList"></div>
+      <div class="dishes-panel" id="dishesPanel">
+        <div class="filters">
+          <input type="text" id="searchInput" placeholder="Search dish...">
+          <input type="number" id="minPrice" placeholder="Min ₹">
+          <input type="number" id="maxPrice" placeholder="Max ₹">
+        </div>
+        <div class="dish-grid" id="dishGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="cart-btn" onclick="toggleCart()">🛒 Cart</button>
+
+  <div class="cart-panel" id="cartPanel">
+    <h3>Your Cart</h3>
+    <div id="cartItems"></div>
+    <hr>
+    <p><strong>Total: ₹<span id="totalAmount">0</span></strong></p>
+    <button id="checkoutBtn" onclick="placeOrder()">Place Order</button>
+  </div>
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+  <script>
+    let selectedRest = null;
+    let restaurants = [], dishes = [], cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function showPanel(panel) {
+      if (panel==='restaurants') loadRestaurants();
+    }
+
+    async function loadRestaurants() {
+      restaurants = await fetch('assets/data/restaurants.json').then(res=>res.json());
+      let html = restaurants.map(r=>`<div class="restaurant-item" data-id="${r.id}">${r.name}</div>`).join('');
+      document.getElementById('restaurantList').innerHTML = html;
+      document.querySelectorAll('.restaurant-item').forEach(el=>{
+        el.onclick = () => {
+          selectedRest = el.dataset.id;
+          loadDishes(selectedRest);
+        };
+      });
+    }
+
+    async function loadDishes(rid){
+      dishes = await fetch('assets/data/foodData.json').then(res=>res.json());
+      displayDishes();
+    }
+
+    function displayDishes(){
+      let list = dishes.filter(d=>d.restaurantId === selectedRest);
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const min = parseInt(document.getElementById('minPrice').value)||0;
+      const max = parseInt(document.getElementById('maxPrice').value)||Infinity;
+
+      list = list.filter(d => d.name.toLowerCase().includes(q) && d.price>=min && d.price<=max);
+
+      let html = list.map(d=>`
+        <div class="dish-card">
+          <span class="heart" onclick="toggleFav(this)">🤍</span>
+          <img src="${d.image}" alt="${d.name}">
+          <h4>${d.name}</h4>
+          <div class="price">₹${d.price}</div>
+          <button class="add-btn" onclick='addToCart(${JSON.stringify(d)})'>Add to Cart</button>
+        </div>`).join('');
+      document.getElementById('dishGrid').innerHTML = html;
+    }
+
+    document.getElementById('searchInput').oninput = displayDishes;
+    document.getElementById('minPrice').oninput = displayDishes;
+    document.getElementById('maxPrice').oninput = displayDishes;
+
+    function toggleFav(el){
+      el.classList.toggle('saved');
+      el.textContent = el.classList.contains('saved') ? '❤️':'🤍';
+    }
+
+    function addToCart(d){
+      let e = cart.find(x=>x.id===d.id);
+      if(e) e.qty++;
+      else cart.push({id:d.id,name:d.name,price:d.price,qty:1});
+      localStorage.setItem('cart',JSON.stringify(cart));
+      alert('Added to cart!');
+      renderCart();
+    }
+
+    function toggleCart(){
+      document.getElementById('cartPanel').classList.toggle('active');
+      document.getElementById('overlay').classList.toggle('active');
+      renderCart();
+    }
+
+    function renderCart(){
+      let html = '', total=0;
+      cart.forEach(c=>{
+        total+= c.qty*c.price;
+        html+= `<div class="cart-item">
+          <span>${c.name} x${c.qty}</span><span>₹${c.qty*c.price}</span>
+        </div>`;
+      });
+      if(!html) html = '<p>Your cart is empty.</p>';
+      document.getElementById('cartItems').innerHTML = html;
+      document.getElementById('totalAmount').innerText = total;
+    }
+
+    function placeOrder(){
+      if(cart.length===0) return alert('Cart empty!');
+      localStorage.setItem('cart',JSON.stringify(cart));
+      window.location.href='placeOrder.html';
+    }
+
+    window.onload = () => { loadRestaurants(); renderCart(); };
+  </script>
+</body>
+</html>

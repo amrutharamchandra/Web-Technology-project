@@ -1,0 +1,62 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.splash-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+#splashVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.logo {
+  width: 200px;
+  animation: slideIn 2s ease-out;
+}
+@keyframes slideIn {
+  0% { transform: translateY(-100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.logo-text {
+  font-size: 60px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.scooter {
+  display: inline-block;
+  position: absolute;
+  left: -50px;
+  bottom: 50px;
+  font-size: 50px;
+  animation: rideAway 3s ease-in-out forwards;
+}
+
+@keyframes rideAway {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vw);
+    opacity: 0;
+  }
+}
+

@@ -1,0 +1,71 @@
+/* css/style.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff9f5;
+  color: #333;
+}
+
+header {
+  background-color: #ff6b00;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+button {
+  background-color: white;
+  color: #ff6b00;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hero {
+  padding: 2rem;
+  background: linear-gradient(to right, #fff2e0, #ffe3c7);
+  text-align: center;
+}
+
+.restaurant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.restaurant-card {
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.restaurant-card:hover {
+  transform: scale(1.02);
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+footer {
+  background-color: #ff6b00;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}

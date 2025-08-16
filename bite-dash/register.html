@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BiteDash Register</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fcb69f, #ffecd2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      overflow-y: auto;
+      max-height: 95vh;
+    }
+
+    h2 {
+      color: #ff6347;
+      margin-bottom: 1rem;
+    }
+
+    input, select, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #ff6347;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background: #e5533c;
+    }
+
+    .link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: blue;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Register to BiteDash</h2>
+    <form id="registerForm">
+      <select id="regRole" required onchange="toggleDeliveryFields()">
+        <option value="">Select Role</option>
+        <option value="user">User</option>
+        <option value="delivery">Delivery Partner</option>
+      </select>
+
+      <input type="text" id="regUsername" placeholder="Choose Username" required />
+      <input type="email" id="regEmail" placeholder="Enter Email" required />
+      <input type="password" id="regPassword" placeholder="Enter Password" required />
+
+      <!-- Delivery Partner Extra Fields -->
+      <div id="deliveryFields" class="hidden">
+        <input type="text" id="fullName" placeholder="Full Name" />
+        <input type="date" id="dob" placeholder="Date of Birth" onchange="calculateAge()" />
+        <input type="text" id="age" placeholder="Age" readonly />
+        <select id="gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" id="aadhar" placeholder="Aadhar Card Number" />
+        <input type="text" id="mobile" placeholder="Mobile Number" />
+        <textarea id="address" rows="2" placeholder="Residential Address"></textarea>
+        <input type="text" id="bikeNo" placeholder="Bike Number" />
+        <input type="text" id="licenseNo" placeholder="Driving License Number" />
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="link" onclick="window.location.href='login.html'">
+      Already have an account? Login
+    </div>
+
+    <div id="registerMessage" class="message"></div>
+  </div>
+
+  <script>
+    function toggleDeliveryFields() {
+      const role = document.getElementById('regRole').value;
+      document.getElementById('deliveryFields').classList.toggle('hidden', role !== 'delivery');
+    }
+
+    function calculateAge() {
+      const dob = new Date(document.getElementById('dob').value);
+      const today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+      document.getElementById('age').value = age;
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const role = document.getElementById('regRole').value;
+      const username = document.getElementById('regUsername').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const messageBox = document.getElementById('registerMessage');
+      messageBox.className = 'message';
+
+      if (!role || !username || !email || !password) {
+        messageBox.textContent = "All fields are required!";
+        messageBox.classList.add("error");
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        messageBox.textContent = "Invalid email format!";
+        messageBox.classList.add("error");
+        return;
+      }
+
+      if (password.length < 8) {
+        messageBox.textContent = "Password must be at least 8 characters!";
+        messageBox.classList.add("error");
+        return;
+      }
+
+      let user = { role, username, email, password };
+
+      if (role === 'delivery') {
+        const fullName = document.getElementById('fullName').value.trim();
+        const dob = document.getElementById('dob').value;
+        const age = document.getElementById('age').value;
+        const gender = document.getElementById('gender').value;
+        const aadhar = document.getElementById('aadhar').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const bikeNo = document.getElementById('bikeNo').value.trim();
+        const licenseNo = document.getElementById('licenseNo').value.trim();
+
+        if (!fullName || !dob || !age || !gender || !aadhar || !mobile || !address || !bikeNo || !licenseNo) {
+          messageBox.textContent = "All delivery partner fields are required!";
+          messageBox.classList.add("error");
+          return;
+        }
+
+        user = {
+          role, username, email, password,
+          fullName, dob, age, gender, aadhar, mobile, address, bikeNo, licenseNo
+        };
+      }
+
+      localStorage.setItem("bitedashUser_" + username, JSON.stringify(user));
+      messageBox.textContent = "Registration successful!";
+      messageBox.classList.remove("error");
+      messageBox.classList.add("success");
+
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

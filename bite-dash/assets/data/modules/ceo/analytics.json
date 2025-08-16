@@ -1,0 +1,47 @@
+{
+  "summary": {
+    "totalOrders": 12543,
+    "totalRevenue": 3895600,
+    "activeUsers": 3450,
+    "totalRestaurants": 20,
+    "totalDishes": 112,
+    "pendingDeliveries": 128
+  },
+  "monthlyRevenue": [
+    { "month": "January", "revenue": 285000 },
+    { "month": "February", "revenue": 310000 },
+    { "month": "March", "revenue": 365000 },
+    { "month": "April", "revenue": 390000 },
+    { "month": "May", "revenue": 450000 },
+    { "month": "June", "revenue": 512000 },
+    { "month": "July", "revenue": 530000 }
+  ],
+  "popularItems": [
+    { "name": "Paneer Butter Masala", "orders": 1023 },
+    { "name": "Margherita Pizza", "orders": 945 },
+    { "name": "Chicken Biryani", "orders": 876 },
+    { "name": "Masala Dosa", "orders": 821 },
+    { "name": "Veg Burger", "orders": 799 }
+  ],
+  "deliveryStats": [
+    { "status": "Delivered", "count": 10870 },
+    { "status": "Pending", "count": 128 },
+    { "status": "Cancelled", "count": 86 },
+    { "status": "Failed", "count": 57 }
+  ],
+  "restaurantPerformance": [
+    { "restaurant": "Spice Hub", "orders": 2100, "revenue": 520000 },
+    { "restaurant": "Pizza Palace", "orders": 1850, "revenue": 460000 },
+    { "restaurant": "South Delight", "orders": 1730, "revenue": 405000 },
+    { "restaurant": "North Flavours", "orders": 1600, "revenue": 390000 }
+  ],
+  "userGrowth": [
+    { "month": "January", "users": 1500 },
+    { "month": "February", "users": 1800 },
+    { "month": "March", "users": 2200 },
+    { "month": "April", "users": 2500 },
+    { "month": "May", "users": 2950 },
+    { "month": "June", "users": 3200 },
+    { "month": "July", "users": 3450 }
+  ]
+}

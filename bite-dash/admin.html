@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BiteDash Admin Panel</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      background: #f8f8f8;
+    }
+    .sidebar {
+      width: 70px;
+      background: #ff6e40;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .sidebar button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      margin: 20px 0;
+      cursor: pointer;
+      position: relative;
+    }
+    .sidebar button:hover::after {
+      content: attr(title);
+      position: absolute;
+      left: 70px;
+      background: #444;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .panel {
+      display: none;
+    }
+    .panel.active {
+      display: block;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button.submit-btn {
+      background: #ff6e40;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .partner-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .partner-card p {
+      margin: 5px 0;
+    }
+    .approve-btn {
+      margin-top: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <button title="Dashboard" onclick="showPanel('restaurantPanel')">🍽️</button>
+    <button title="Dishes" onclick="showPanel('dishesPanel')">🍜</button>
+    <button title="Approvals" onclick="showPanel('approvalsPanel')">👤</button>
+    <button title="Logout" onclick="window.location.href='logout.html'">🔓</button>
+  </div>
+
+  <div class="content">
+    <div id="restaurantPanel" class="panel active">
+      <h2>Manage Restaurants</h2>
+      <form>
+        <label>Restaurant Name:</label>
+        <input type="text" placeholder="e.g., Spicy Treats" />
+        <label>Location:</label>
+        <input type="text" placeholder="e.g., Delhi" />
+        <label>Upload Photo:</label>
+        <input type="file" />
+        <label>Type:</label>
+        <input type="text" placeholder="e.g., Veg/Non-Veg/Fusion" />
+        <label>Rating (0-5):</label>
+        <input type="number" min="0" max="5" step="0.1" />
+        <button type="submit" class="submit-btn">Add Restaurant</button>
+      </form>
+    </div>
+
+    <div id="dishesPanel" class="panel">
+      <h2>Manage Dishes</h2>
+      <form>
+        <label>Dish Name:</label>
+        <input type="text" placeholder="e.g., Paneer Tikka" />
+        <label>Price:</label>
+        <input type="number" placeholder="e.g., 199" />
+        <label>Upload Photo:</label>
+        <input type="file" />
+        <label>Category:</label>
+        <input type="text" placeholder="e.g., Starter/Main" />
+        <label>Associated Restaurant:</label>
+        <input type="text" placeholder="e.g., Spicy Treats" />
+        <button type="submit" class="submit-btn">Add Dish</button>
+      </form>
+    </div>
+
+    <div id="approvalsPanel" class="panel">
+      <h2>Approve Delivery Partners</h2>
+      <div id="partnerList"></div>
+    </div>
+  </div>
+
+  <script>
+    const approvals = [
+      {
+        name: "Ravi Kumar",
+        location: "Hyderabad",
+        email: "ravi.kumar@example.com",
+        phone: "9876543210",
+        license: "DL12345"
+      },
+      {
+        name: "Neha Singh",
+        location: "Chennai",
+        email: "neha.singh@example.com",
+        phone: "9123456789",
+        license: "DL67890"
+      },
+      {
+        name: "Ajay Patel",
+        location: "Bangalore",
+        email: "ajay.patel@example.com",
+        phone: "9988776655",
+        license: "DL11223"
+      },
+      {
+        name: "Deepika Joshi",
+        location: "Mumbai",
+        email: "deepika.j@example.com",
+        phone: "9000011122",
+        license: "DL33445"
+      }
+    ];
+
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function generateUsername(name) {
+      return name.toLowerCase().replace(/\s/g, '') + Math.floor(Math.random() * 1000);
+    }
+
+    function generatePassword() {
+      return Math.random().toString(36).slice(-8);
+    }
+
+    function loadApprovals() {
+      const container = document.getElementById("partnerList");
+      approvals.forEach(partner => {
+        const div = document.createElement("div");
+        div.className = "partner-card";
+        div.innerHTML = `
+          <p><strong>Name:</strong> ${partner.name}</p>
+          <p><strong>Location:</strong> ${partner.location}</p>
+          <p><strong>Email:</strong> ${partner.email}</p>
+          <p><strong>Phone:</strong> ${partner.phone}</p>
+          <p><strong>License:</strong> ${partner.license}</p>
+          <button class="approve-btn" onclick="approvePartner(this, '${partner.name}')">Approve</button>
+          <div class="credentials" style="display:none; margin-top:10px;"></div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function approvePartner(button, name) {
+      const card = button.parentElement;
+      const username = generateUsername(name);
+      const password = generatePassword();
+      const credDiv = card.querySelector('.credentials');
+      credDiv.innerHTML = `<p><strong>Username:</strong> ${username}</p><p><strong>Password:</strong> ${password}</p>`;
+      credDiv.style.display = 'block';
+      button.remove();
+    }
+
+    window.onload = loadApprovals;
+  </script>
+</body>
+</html>

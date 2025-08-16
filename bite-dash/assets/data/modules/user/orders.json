@@ -1,0 +1,22 @@
+[
+  {
+    "orderId": "OD123",
+    "userName": "Ravi Kumar",
+    "phone": "+91-9876543211",
+    "food": "Veg Biryani",
+    "restaurant": "Hyderabadi Spices",
+    "address": "12 Residency Road, Bangalore",
+    "status": "Ordered",
+    "assignedPartnerId": "DP101"
+  },
+  {
+    "orderId": "OD124",
+    "userName": "Sneha Rao",
+    "phone": "+91-9834567210",
+    "food": "Pasta",
+    "restaurant": "Italian Crust",
+    "address": "45 MG Road, Bangalore",
+    "status": "Delivered",
+    "assignedPartnerId": "DP102"
+  }
+]
